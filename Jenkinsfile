@@ -44,6 +44,19 @@ pipeline {
                 """
             }
         }
+// this is sonar qube SAST(static application security testing) stage.
+        stage('Sonar Scan') {
+            environment {
+                def scannerHome = tool 'sonar-8.0'
+            }
+            steps {
+                script {
+                    // sonarqube server name is sonar-server. this is configured in jenkins global tool configuration. using token for authentication. token is generated from sonarqube server.
+                    withSonarQubeEnv('sonar-server') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+            }
+        }
 
         stage('Build Image') {
             steps {

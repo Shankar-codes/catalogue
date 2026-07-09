@@ -33,6 +33,15 @@ pipeline {
                 """
             }
         }
+
+        stage('Build Image') {
+            steps {
+                sh """
+                    docker build -t catalogue:${appVersion} .
+                    docker images
+                """
+            }
+        }
         stage('Deploy') {
             when { 
                 expression { "$params.DEPLOY" == "true" }

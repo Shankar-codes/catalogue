@@ -16,7 +16,5 @@
     "express-pino-logger": "^4.0.0",
     "pino-pretty": "^2.5.0",
     "@instana/collector": "^1.132.2",
-    /* to create the error in dependbot in git enable the below code
-    "redis": "^2.8.0" */
   }
 }

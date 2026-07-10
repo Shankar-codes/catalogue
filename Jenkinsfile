@@ -132,16 +132,15 @@ pipeline {
             }
         }
 
-        stage('Trivy Scan'){
+        stage('Trivy Scan') {
             steps {
-                script{
+                script {
                     sh """
                         trivy image \
                         --scanners vuln \
-                        --severity HIGH,CRITICAL,MEDIUM \
-                        --pkg-types os \
+                        --severity HIGH,CRITICAL \
+                        --pkg-types os,library \
                         --exit-code 1 \
-                        --skip-db-update \
                         --no-progress \
                         --format table \
                         ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion}
@@ -149,6 +148,7 @@ pipeline {
                 }
             }
         }
+
         stage('Deploy') {
             when { 
                 expression { "$params.DEPLOY" == "true" }

@@ -4,11 +4,11 @@ COPY package.json .
 COPY *.js .
 RUN npm install
 
-FROM node:20.19.5-alpine3.22
+FROM node:20.20.2-alpine3.22
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 WORKDIR /opt/server
 RUN apk update && \
-apk upgrade 
-RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+    apk upgrade 
 COPY --from=build /opt/server /opt/server/
 EXPOSE 8080
 LABEL created by="Shankar Thimmappa" \

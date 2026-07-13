@@ -10,5 +10,5 @@ if ( ! env.BRANCH_NAME.equalsIgnoreCase('main') ){
     nodeJSEKSPipeline(configMap)
 }
 else{
-    echo "Please follow the the CR Process"
+    echo "Please follow the the CR Process "
 }

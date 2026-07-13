@@ -141,7 +141,7 @@ pipeline {
                         --severity HIGH,CRITICAL,MEDIUM \
                         --pkg-types os \
                         --exit-code 1 \
-                        --skip-db-update \
+                        // --skip-db-update 
                         --no-progress \
                         --format table \
                         ${ACC_ID}.dkr.ecr.us-east-1.amazonaws.com/${PROJECT}/${COMPONENT}:${appVersion}

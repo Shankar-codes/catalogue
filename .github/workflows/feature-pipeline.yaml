@@ -1,0 +1,9 @@
+name: feature-pipeline
+on: [push]
+jobs:
+  feature-pipeline: Shankar-t-Codes/reuseable-workflows/.github/workflows/featured-node-js-pipeline.yaml@main
+  with:
+    project: roboshop
+    component: catalogue
+    environment: dev
+  secrets: inherit
